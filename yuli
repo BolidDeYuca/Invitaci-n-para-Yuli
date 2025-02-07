@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti ❤️</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffdde1;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.5);
+            animation: fadeIn 1.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            color: #d63384;
+        }
+
+        .btn {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e91e63;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff4081;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-100vh) translateX(0);
+            }
+            to {
+                transform: translateY(100vh) translateX(50px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¿Quieres ser mi pareja este 14 de febrero? ❤️</h1>
+        <button class="btn" onclick="showConfetti()">¡Sí, claro! 💖</button>
+    </div>
+
+    <script>
+        function showConfetti() {
+            for (let i = 0; i < 50; i++) {
+                let confetti = document.createElement("div");
+                confetti.classList.add("confetti");
+                document.body.appendChild(confetti);
+                confetti.style.left = Math.random() * window.innerWidth + "px";
+                confetti.style.animationDuration = (Math.random() * 2 + 1) + "s";
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+    </script>
+</body>
+</html>
