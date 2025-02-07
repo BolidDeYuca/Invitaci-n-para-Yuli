@@ -80,7 +80,7 @@
             }
         }
 
-        /* Nueva clase para agrandar el botón */
+       
         .grow {
             transition: transform 0.3s ease-in-out;
         }
@@ -89,13 +89,13 @@
 </head>
 <body>
     <div class="container" id="container">
-        <h1>Yuli, ¿Podría ser tu pareja para este 14 de febrero? ❤️</h1>
+        <h1>Yuli, ¿Podría ser tu pareja para este 14 de febrero? 💖</h1>
         <button class="btn grow" id="yesButton" onclick="handleYes()">Síii claro 💖</button>
         <button class="btn" id="noButton" onclick="handleNo()">No, gracias :))</button>
     </div>
 
     <script>
-        let scaleFactor = 1.2; // Factor de crecimiento
+        let scaleFactor = 1.2; 
         let clicks = 0;
 
         function showConfetti() {
@@ -117,11 +117,10 @@
             const yesButton = document.getElementById('yesButton');
             clicks++;
 
-            // Incrementa el tamaño del botón en cada clic
             let newSize = 1 + clicks * scaleFactor;
             yesButton.style.transform = `scale(${newSize})`;
 
-            // Si el botón ya cubre la pantalla, mostrar el mensaje final
+         
             if (newSize >= 10) {
                 document.body.innerHTML = "<h1 style='color: #d63384; text-align: center; font-size: 40px;'>Sabía que dirías que sí, te amoo 💖</h1>";
             }
