@@ -80,7 +80,7 @@
             }
         }
 
-       
+        /* Clase para agrandar el botón */
         .grow {
             transition: transform 0.3s ease-in-out;
         }
@@ -95,7 +95,6 @@
     </div>
 
     <script>
-        let scaleFactor = 1.2; 
         let clicks = 0;
 
         function showConfetti() {
@@ -117,14 +116,16 @@
             const yesButton = document.getElementById('yesButton');
             clicks++;
 
-            let newSize = 1 + clicks * scaleFactor;
+            // Incrementa el tamaño del botón en cada clic
+            let newSize = 1 + clicks * 0.3; // Crece más lentamente
             yesButton.style.transform = `scale(${newSize})`;
 
-         
-            if (newSize >= 10) {
+            // Cuando haya 5 clics, mostrar el mensaje final
+            if (clicks >= 5) {
                 document.body.innerHTML = "<h1 style='color: #d63384; text-align: center; font-size: 40px;'>Sabía que dirías que sí, te amoo 💖</h1>";
             }
         }
     </script>
 </body>
 </html>
+
