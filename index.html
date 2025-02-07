@@ -80,30 +80,25 @@
             }
         }
 
-        .container-expanded {
-            animation: grow 5s forwards;
+        /* Nueva clase para agrandar el botón */
+        .grow {
+            font-size: 18px;
+            padding: 10px 20px;
+            transition: all 0.3s ease-in-out;
         }
 
-        @keyframes grow {
-            to {
-                transform: scale(10);
-                opacity: 0;
-            }
-        }
-
-        .hidden {
-            display: none;
-        }
     </style>
 </head>
 <body>
     <div class="container" id="container">
         <h1>Yuli, ¿Podría ser tu pareja para este 14 de febrero? ❤️</h1>
-        <button class="btn" id="yesButton" onclick="handleYes()">Síii claro 💖</button>
+        <button class="btn grow" id="yesButton" onclick="handleYes()">Síii claro 💖</button>
         <button class="btn" id="noButton" onclick="handleNo()">No, gracias :))</button>
     </div>
 
     <script>
+        let size = 1;
+
         function showConfetti() {
             for (let i = 0; i < 50; i++) {
                 let confetti = document.createElement("div");
@@ -120,15 +115,14 @@
         }
 
         function handleNo() {
-            const container = document.getElementById('container');
             const yesButton = document.getElementById('yesButton');
-            container.classList.add('container-expanded');
-            yesButton.classList.add('hidden');
-            setTimeout(() => {
-                container.innerHTML = "<h1>Sabía que dirías que sí, te amoo 💖</h1>";
-            }, 5000);
+            size += 0.5; // Aumenta el tamaño del botón en cada clic
+            yesButton.style.transform = `scale(${size})`;
+
+            if (size >= 10) {
+                document.getElementById('container').innerHTML = "<h1>Sabía que dirías que sí, te amoo 💖</h1>";
+            }
         }
     </script>
 </body>
 </html>
-
