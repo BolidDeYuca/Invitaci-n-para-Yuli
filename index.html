@@ -53,7 +53,7 @@
             font-size: 18px;
             border-radius: 10px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s ease-in-out;
             margin: 10px;
         }
 
@@ -82,9 +82,7 @@
 
         /* Nueva clase para agrandar el botón */
         .grow {
-            font-size: 18px;
-            padding: 10px 20px;
-            transition: all 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out;
         }
 
     </style>
@@ -97,7 +95,8 @@
     </div>
 
     <script>
-        let size = 1;
+        let scaleFactor = 1.2; // Factor de crecimiento
+        let clicks = 0;
 
         function showConfetti() {
             for (let i = 0; i < 50; i++) {
@@ -116,11 +115,15 @@
 
         function handleNo() {
             const yesButton = document.getElementById('yesButton');
-            size += 0.5; // Aumenta el tamaño del botón en cada clic
-            yesButton.style.transform = `scale(${size})`;
+            clicks++;
 
-            if (size >= 10) {
-                document.getElementById('container').innerHTML = "<h1>Sabía que dirías que sí, te amoo 💖</h1>";
+            // Incrementa el tamaño del botón en cada clic
+            let newSize = 1 + clicks * scaleFactor;
+            yesButton.style.transform = `scale(${newSize})`;
+
+            // Si el botón ya cubre la pantalla, mostrar el mensaje final
+            if (newSize >= 10) {
+                document.body.innerHTML = "<h1 style='color: #d63384; text-align: center; font-size: 40px;'>Sabía que dirías que sí, te amoo 💖</h1>";
             }
         }
     </script>
