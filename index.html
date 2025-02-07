@@ -31,6 +31,18 @@
 
         h1 {
             color: #d63384;
+            animation: textAppear 2s forwards;
+        }
+
+        @keyframes textAppear {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .btn {
@@ -42,6 +54,7 @@
             border-radius: 10px;
             cursor: pointer;
             transition: 0.3s;
+            margin: 10px;
         }
 
         .btn:hover {
@@ -66,12 +79,28 @@
                 transform: translateY(100vh) translateX(50px);
             }
         }
+
+        .container-expanded {
+            animation: grow 5s forwards;
+        }
+
+        @keyframes grow {
+            to {
+                transform: scale(10);
+                opacity: 0;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>¿Quieres ser mi pareja este 14 de febrero? ❤️</h1>
-        <button class="btn" onclick="showConfetti()">¡Sí, claro! 💖</button>
+    <div class="container" id="container">
+        <h1>Yuli, ¿Podría ser tu pareja para este 14 de febrero? ❤️</h1>
+        <button class="btn" id="yesButton" onclick="handleYes()">Síii claro 💖</button>
+        <button class="btn" id="noButton" onclick="handleNo()">No, gracias :))</button>
     </div>
 
     <script>
@@ -85,8 +114,21 @@
                 setTimeout(() => confetti.remove(), 3000);
             }
         }
+
+        function handleYes() {
+            showConfetti();
+        }
+
+        function handleNo() {
+            const container = document.getElementById('container');
+            const yesButton = document.getElementById('yesButton');
+            container.classList.add('container-expanded');
+            yesButton.classList.add('hidden');
+            setTimeout(() => {
+                container.innerHTML = "<h1>Sabía que dirías que sí, te amoo 💖</h1>";
+            }, 5000);
+        }
     </script>
 </body>
 </html>
-
 
