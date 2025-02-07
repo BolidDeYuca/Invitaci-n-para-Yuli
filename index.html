@@ -10,10 +10,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url('fondo.png'); /* Cambia 'fondo.jpg' por el nombre de tu imagen */
-            background-size: cover; /* Hace que la imagen cubra toda la pantalla */
-            background-position: center; /* Centra la imagen */
-            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            background-color: #ffdde1;
             overflow: hidden;
             font-family: 'Arial', sans-serif;
         }
@@ -23,7 +20,7 @@
             opacity: 0;
             transform: scale(0.5);
             animation: fadeIn 1.5s forwards;
-            background: rgba(255, 255, 255, 0.6); /* Fondo semitransparente para que el texto sea legible */
+            background: rgba(255, 255, 255, 0.6);
             padding: 20px;
             border-radius: 15px;
         }
@@ -100,7 +97,7 @@
     </div>
 
     <script>
-        let clicks = 0;
+        let clicksYes = 0;
 
         function showConfetti() {
             for (let i = 0; i < 50; i++) {
@@ -114,23 +111,25 @@
         }
 
         function handleYes() {
-            showConfetti();
+            document.body.innerHTML = "<h1 style='color: #d63384; text-align: center; font-size: 40px;'>Te amo muchooo mi enojona 💖</h1>";
+            showConfetti(); 
         }
 
         function handleNo() {
             const yesButton = document.getElementById('yesButton');
-            clicks++;
+            clicksYes++;
 
-            let newSize = 1 + clicks * 0.3; 
+            let newSize = 1 + clicksYes * 0.3; 
             yesButton.style.transform = `scale(${newSize})`;
 
-            if (clicks >= 9) {
+            if (clicksYes >= 9) {
                 document.body.innerHTML = "<h1 style='color: #d63384; text-align: center; font-size: 40px;'>Sabía que dirías que sí, te amoo 💖</h1>";
             }
         }
     </script>
 </body>
 </html>
+
 
 
 
